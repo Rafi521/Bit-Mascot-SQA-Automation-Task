@@ -11,7 +11,7 @@ test.describe('SauceDemo – basic checkout flow', () => {
     // Open the login page
     await page.goto('https://www.saucedemo.com/');
     await expect(page).toHaveTitle('Swag Labs');
-    await page.waitForTimeout(1500);   // short pause so the transition is visible
+    await page.waitForTimeout(1500);  
 
     // Type username
     const userField = page.getByPlaceholder('Username');
@@ -25,25 +25,24 @@ test.describe('SauceDemo – basic checkout flow', () => {
     await passField.pressSequentially(PASSWORD, { delay: 150 });
     await page.waitForTimeout(800);
 
-    // Submit the form
+    // Login
     await page.getByRole('button', { name: 'Login' }).click();
     await page.waitForTimeout(1200);
 
-    // Make sure we actually landed on the products page
+    // landed on the products page
     await expect(page).toHaveURL(/inventory/);
     await page.waitForSelector('.inventory_item');
 
-    // Add the chosen product
+    // Add the product
     const item = page.locator('.inventory_item', { hasText: PRODUCT_NAME });
     await item.waitFor();
     await item.getByRole('button', { name: 'Add to cart' }).click();
     await page.waitForTimeout(1200);
 
-    // Jump to the cart
+    // cart
     await page.locator('.shopping_cart_link').click();
     await page.waitForTimeout(1200);
 
-    // Cart page should display the right item
     await expect(page.locator('.title')).toHaveText('Your Cart');
 
     const cartItem = page.locator('.cart_item', { hasText: PRODUCT_NAME });
@@ -51,11 +50,11 @@ test.describe('SauceDemo – basic checkout flow', () => {
     await expect(cartItem.locator('.inventory_item_name')).toHaveText(PRODUCT_NAME);
     await page.waitForTimeout(1200);
 
-    // Open the sidebar menu
+    // sidebar
     await page.getByRole('button', { name: 'Open Menu' }).click();
     await page.waitForTimeout(800);
 
-    // Log out and wrap up the flow
+    // Log out 
     await page.getByRole('link', { name: 'Logout' }).click();
     await page.waitForTimeout(1200);
   });
