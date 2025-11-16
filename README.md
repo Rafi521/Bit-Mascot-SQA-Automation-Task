@@ -20,7 +20,7 @@ npm install
 npx playwright install
 ```
 
-### 3. Run tests (headless)
+### 3. Run tests 
 ```
 npm test
 ```
