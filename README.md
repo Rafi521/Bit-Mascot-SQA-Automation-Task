@@ -1,6 +1,6 @@
 # BitMascot Assessment - Playwright Automation
 
-This project automates the SauceDemo E2E flow using Playwright with JavaScript (ES Modules).
+This project automates the SauceDemo using Playwright with JavaScript.
 
 ## Scenario Covered
 - Login with valid credentials
@@ -20,12 +20,7 @@ npm install
 npx playwright install
 ```
 
-### 3. Run tests (headed mode - browser visible)
-```
-npm run test:headed
-```
-
-### 4. Run tests (headless)
+### 3. Run tests (headless)
 ```
 npm test
 ```
